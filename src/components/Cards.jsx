@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './Card';
+import styles from './ComponentStyles.module.css'
 
 export default function Cards(props) {
    const cartas = props.characters.map(function (character) {
@@ -13,7 +14,7 @@ export default function Cards(props) {
          onClose={() => window.alert('Emulamos que se cierra la card')} />);
    });
    return (
-      <div>
+      <div className={styles.divCards}>
          {cartas}
       </div>
    );

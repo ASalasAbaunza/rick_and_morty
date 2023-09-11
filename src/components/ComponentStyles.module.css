@@ -1,0 +1,103 @@
+.divSearch {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 50px;
+    background-color: darkgray;
+    padding: 5px;
+    border: 1px;
+    border-radius: 5px;
+}
+
+.inputSearch {
+    width: 60%;
+    margin-right: 10%;
+    border-radius: 5px;
+    border: 1px;
+    padding: 5px;
+}
+
+.botonSearch {
+    background-color: yellow;
+    border: 1px;
+    border-radius: 5px;
+    height: auto;
+    width: auto;
+    padding: 5px;
+}
+
+.botonSearch:hover {
+    background-color: aquamarine;
+    color: black;
+}
+
+.divCards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px;
+    width: auto;
+}
+
+.imgCard {
+    max-width: 100%;
+}
+
+.botonCard {
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    background-color: red;
+    border: 1px;
+    border-radius: 5xp;
+    height: auto;
+    width: auto;
+    padding: 5px;
+    color: white; 
+    transform: translate(-100%,-0%);
+}
+
+.botonCard:hover {
+    background-color:yellow;
+    color: black;
+    font-weight: bold;
+}
+
+.nameImg {
+    position: absolute;
+    top: 75%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    background-color: yellow;
+    color: black;
+    height: auto;
+    width: auto;
+    padding: 5px;
+    border: 1px;
+    border-radius: 5px;
+    font-size: 1vw;
+}
+
+.divDataImage {
+    max-width: 100%;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: gainsboro;
+    margin: 0px;
+    border: 1px;
+    border-radius: 5px;
+}
+
+.dataImage {
+    color: black;
+    font-size: 1vw;
+    margin: 10px;
+}
