@@ -35,7 +35,7 @@
 
 .divCards {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     align-items: center;
     flex-direction: row;
@@ -53,7 +53,7 @@
     left: 100%;
     background-color: red;
     border: 1px;
-    border-radius: 5xp;
+    border-bottom-left-radius: 5px;
     height: auto;
     width: auto;
     padding: 5px;
@@ -76,6 +76,7 @@
     color: black;
     height: auto;
     width: auto;
+    max-width: 49%;
     padding: 5px;
     border: 1px;
     border-radius: 5px;
@@ -87,11 +88,12 @@
     height: 100%;
     padding: 5px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     align-items: center;
     flex-direction: row;
     background-color: gainsboro;
-    margin: 0px;
+    margin-bottom: 5px;
     border: 1px;
     border-radius: 5px;
 }
