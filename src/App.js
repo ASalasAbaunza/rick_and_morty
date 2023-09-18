@@ -41,7 +41,7 @@ const onClose = (id) => {
 
    return (
       <div>
-         <div>
+         <div style={{backgroundColor: 'darkgray'}}>
             <SearchBar onSearch={onSearch} />
          </div>
          <Routes>

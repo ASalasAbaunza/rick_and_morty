@@ -122,3 +122,49 @@
     font-weight: bold;
     color: black;
 }
+
+.divDetail {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    max-height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.divDetailData {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: black;
+    opacity: 85%;
+    padding: 20px;
+    height: 93%;
+    width: 50%;
+}
+
+.divDetailImg {
+    width: 450px;
+    height: 450px;
+    border-radius: 50%; /* Creates a circular shape */
+    overflow: hidden; /* Clips the content to the circle */
+    background-color: #ccc; /* Background color of the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailName {
+    font-size: 80px;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.detailData {
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
