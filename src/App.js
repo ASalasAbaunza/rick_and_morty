@@ -1,30 +1,32 @@
-import Cards from './components/Cards.jsx';
+import React from 'react';
 import SearchBar from './components/SearchBar.jsx';
-//import {Routes, Route} from 'react-router-dom';
+import Home from './components/Home.jsx'
+import About from './components/About.jsx';
+import Detail from './components/Detail.jsx';
+import {Routes, Route} from 'react-router-dom';
 import { useState } from 'react';
 
 function App() {
+   let [characters, setCharacters] = useState([]);
+    //Estamos creando un estado y una función para modificar el estado
 
-let [characters, setCharacters] = useState([]);
-//Estamos creando un estado y una función para modificar el estado
-
-const onSearch = (id) => {
-   fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-         let printed = false;
-         for (let i=0; i<characters.length;i++) {
-            if (characters[i].id === data.id) {
-               printed = true;
-            }
-         }
-         if (printed) {
-            window.alert("Character is already there!");
-         } else {
-            setCharacters([...characters,data])
-         }
-      });
-};
+    const onSearch = (id) => {
+        fetch(`https://rickandmortyapi.com/api/character/${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                let printed = false;
+                for (let i=0; i<characters.length;i++) {
+                    if (characters[i].id === data.id) {
+                    printed = true;
+                    }
+                 }
+                if (printed) {
+                    window.alert("Character is already there!");
+                } else {
+                    setCharacters([...characters,data])
+                }
+        });
+    };
 
 const onClose = (id) => {
    let newCharacters = [];
@@ -39,10 +41,14 @@ const onClose = (id) => {
 
    return (
       <div>
-         <div style={{display: "flex", justifyContent: 'flex-end'}}>
+         <div>
             <SearchBar onSearch={onSearch} />
          </div>
-         <Cards characters={characters} onClose={onClose}/>
+         <Routes>
+            <Route path='/home' element={<Home characters={characters} onClose={onClose} />} />
+            <Route path='/about' element={<About/>} />
+            <Route path='/detail/:id' element={<Detail/>} />
+         </Routes>
       </div>
    );
 }

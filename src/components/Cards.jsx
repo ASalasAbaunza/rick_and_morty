@@ -5,7 +5,7 @@ import styles from './ComponentStyles.module.css'
 export default function Cards(props) {
    const cartas = props.characters.map(function (character) {
       return (
-      <Card 
+      <Card
          key={character.id}
          name={character.name}
          status={character.status}
