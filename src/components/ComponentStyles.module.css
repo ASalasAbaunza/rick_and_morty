@@ -70,6 +70,15 @@
     transform: translate(-100%,-0%);
 }
 
+.botonFav {
+    position: absolute;
+    top: 1%;
+    left: 0%;
+    background-color: transparent;
+    border: none;
+    font-size: x-large;
+}
+
 .botonCard:hover {
     background-color:yellow;
     color: black;
