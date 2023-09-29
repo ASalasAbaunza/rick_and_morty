@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 
 function Card(props) {
-   const myFavorites = useSelector((state) => state.myFavorites);
+   const myFavorites = useSelector((state) => state.allCharacters);
    const dispatch = useDispatch();
 
    let [isFav, setIsFav] = useState(false);
@@ -44,7 +44,7 @@ function Card(props) {
             }
             {
                props.favorite ? (
-                  <button style={{display: 'none'}} className={styles.botonCard} onClick={() => props.onClose(props.id)}>X</button>
+                  <button style={{display: 'none'}} className={styles.botonCard}>X</button>
                ) : (
                   <button className={styles.botonCard} onClick={() => props.onClose(props.id)}>X</button>
                )
@@ -57,7 +57,7 @@ function Card(props) {
             <h2 className={styles.dataImage}>{props.status}</h2>
             <h2 className={styles.dataImage}>{props.species}</h2>
             <h2 className={styles.dataImage}>{props.gender}</h2>
-            <h2 className={styles.dataImage}>{props.origin}</h2>
+            <h2 className={styles.dataImage}>{props.origin?.name}</h2>
          </div>
       </div>
    );
@@ -65,7 +65,7 @@ function Card(props) {
 
 const mapStateToProps = (state) => {
    return {
-      myFavorites: state.myFavorites,
+      allCharacters: state.allCharacters,
    }
 };
 
