@@ -56,6 +56,9 @@ function App(props) {
                } else {
                   setCharacters([...characters,data])
                }
+         })
+         .catch((error) => {
+            window.alert(error);
          });
    };
 
