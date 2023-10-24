@@ -9,6 +9,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { removeFav } from './redux/actions.js';
+import axios from 'axios';
 
 function App(props) {
    let [characters, setCharacters] = useState([]);
@@ -18,7 +19,7 @@ function App(props) {
 
    const navigate = useNavigate();
    const [access, setAccess] = useState(false);
-   const email = 'alex.aba2409@gmail.com';
+   /*const email = 'alex.aba2409@gmail.com';
    const password = 'morgenial1';
 
    const login = (form) => {
@@ -28,7 +29,21 @@ function App(props) {
       } else {
          alert('Check your login details!')
       }
-   };
+   };*/
+
+   function login(userData) {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&&password=${password}`).then(({ data }) => {
+         const { access } = data;
+         setAccess(data);
+         if (access) {
+            navigate('/home');
+         } else {
+            alert('Check your login details!');
+         }
+      });
+   }
 
    const logout = () => {
       setAccess(false);
@@ -42,9 +57,6 @@ function App(props) {
       fetch(`http://localhost:3001/rickandmorty/character/${id}`)
          .then((res) => res.json())
          .then((data) => {
-            if (!data?.id) {
-               return window.alert('No character with that ID');
-            }
             let printed = false;
             for (let i=0; i<characters.length;i++) {
                if (characters[i].id === data.id) {

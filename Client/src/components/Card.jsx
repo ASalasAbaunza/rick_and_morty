@@ -18,7 +18,7 @@ function Card(props) {
          setIsFav(false);
          dispatch(removeFav(props.id));
       } else {
-         setIsFav(false);
+         setIsFav(true);
          dispatch(addFav(props));
       }
    };
@@ -69,7 +69,7 @@ const mapStateToProps = (state) => {
    }
 };
 
-const mapDispatchToProps = (dispatch) => {
+/*const mapDispatchToProps = (dispatch) => {
    return {
       addFav: () => {
          dispatch(addFav());
@@ -78,6 +78,17 @@ const mapDispatchToProps = (dispatch) => {
          dispatch(removeFav());
       }
    }
-}
+}*/
+
+const mapDispatchToProps = (dispatch) => {
+   return {
+     addFav: (props) => { // Pass the props argument here
+       dispatch(addFav(props));
+     },
+     removeFav: (id) => { // Pass the ID as an argument here
+       dispatch(removeFav(id));
+     }
+   };
+ };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
