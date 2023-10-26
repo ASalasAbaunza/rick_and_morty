@@ -31,7 +31,7 @@ function App(props) {
       }
    };*/
 
-   function login(userData) {
+   /*function login(userData) {
       const { email, password } = userData;
       const URL = 'http://localhost:3001/rickandmorty/login/';
       axios(URL + `?email=${email}&&password=${password}`).then(({ data }) => {
@@ -43,6 +43,23 @@ function App(props) {
             alert('Check your login details!');
          }
       });
+   }*/
+
+   async function login(userData) {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      try {
+         let response = await axios(URL + `?email=${email}&&password=${password}`);
+         const { access } = response.data;
+         setAccess(response.data);
+         if (access) {
+            navigate('/home');
+         } else {
+            alert('Check your login details!');
+         }
+      } catch (error) {
+         window.alert(error.message);
+      }
    }
 
    const logout = () => {
@@ -53,7 +70,7 @@ function App(props) {
       !access && navigate('/');
    }, [access]);
 
-   const onSearch = (id) => {
+   /*const onSearch = (id) => {
       fetch(`http://localhost:3001/rickandmorty/character/${id}`)
          .then((res) => res.json())
          .then((data) => {
@@ -72,7 +89,26 @@ function App(props) {
          .catch((error) => {
             window.alert(error);
          });
-   };
+   };*/
+
+   const onSearch = async (id) => {
+      try {
+         let res = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`);
+         let printed = false;
+         for (let i=0; i<characters.length;i++) {
+            if (characters[i].id === res.data.id) {
+               printed = true;
+            }
+         }
+         if (printed) {
+            window.alert("Character is already there!");
+         } else {
+            setCharacters([...characters,res.data])
+         }
+      } catch (error) {
+         window.alert(error.message);
+      }
+   }
 
    const onClose = (id) => {
       let newCharacters = [];
