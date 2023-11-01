@@ -1,16 +1,15 @@
 let myFavorites = [];
 
-function postFav(req, res) {
-    myFavorites.push(req.body);
-    res.status(200).json(myFavorites);
+function postFav(newFav) {
+    myFavorites.push(newFav);
+    return myFavorites;
 }
 
-function deleteFav(req, res) {
-    let { id } = req.params;
+function deleteFav(id) {
     myFavorites = myFavorites.filter((favorite) => {
         return favorite.id !== id;
     });
-    res.status(200).json(myFavorites);
+    return myFavorites;
 }
 
 module.exports = {

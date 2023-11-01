@@ -52,8 +52,7 @@ const axios = require('axios');
         )
 }*/
 
-async function getCharById(req, res) {
-    const { id } = req.params;
+async function getCharById(id) {
     const URL = `https://rickandmortyapi.com/api/character/${id}`;
     try {
         let response = await axios.get(URL);
@@ -67,12 +66,10 @@ async function getCharById(req, res) {
                 image: response.data.image,
                 status: response.data.status,
             };
-            res.json(character);
-        } else {
-            res.status(404).send('Not Found');
+            return character;
         }
     } catch (error) {
-        res.status(500).send(error.message); 
+        throw Error(error.message);
     }
 }
 

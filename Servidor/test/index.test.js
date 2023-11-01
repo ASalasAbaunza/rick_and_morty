@@ -34,9 +34,9 @@ describe('GET /rickandmorty/character/:id', () => {
         expect(res.body).toHaveProperty('origin');
         expect(res.body).toHaveProperty('image');
     });
-    it('Si hay un error responde con status: 500', async () => {
+    it('Si el personaje no existe, responde con: 400', async () => {
         const res = await agent.get('/rickandmorty/character/999');
-        expect(res.statusCode).toBe(500);
+        expect(res.statusCode).toBe(400);
     });
 });
 

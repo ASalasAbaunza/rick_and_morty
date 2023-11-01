@@ -1,16 +1,13 @@
 const users = require('../utils/users');
 
-function login(req, res) {
-    let { email, password } = req.query;
+function login(email, password) {
     const userFound = users.find((user) => {
         return user.email === email && user.password === password
     });
     if (userFound) {
-        res.status(200).json({access: true});
-        console.log('Access OK');
+        return {access: true};
     } else {
-        res.status(200).json({access: false});
-        console.log('Access Denied');
+        return {access: false};
     }
 }
 

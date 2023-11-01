@@ -8,20 +8,33 @@ const routePostFav = Router();
 const routeDeleteFav = Router();
 const routeLogin = Router();
 
-routeGetCharById.get('/character/:id', (req, res) => {
-    getCharById(req, res);
+routeGetCharById.get('/character/:id', async (req, res) => {
+    let { id } = req.params;
+    try {
+        const response = await getCharById(id);
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(400).json({error: 'Personaje no existente'});
+    }
 });
 
 routePostFav.post('/fav', (req, res) => {
-    postFav(req, res);
+    let { id, name, gender, species, origin, image, status } = req.body;
+    let newFav = {id, name, gender, species, origin, image, status};
+    const favorites = postFav(newFav);
+    res.status(200).json(favorites);
 });
 
 routeDeleteFav.delete('/fav/:id', (req, res) => {
-    deleteFav(req, res);
+    let { id } = req.params;
+    const favorites = deleteFav(id);
+    res.status(200).json(favorites);
 });
 
 routeLogin.get('/login', (req, res) => {
-    login(req, res);
+    let { email, password } = req.query
+    let response = login(email, password);
+    res.status(200).json(response);
 });
 
 module.exports = {
