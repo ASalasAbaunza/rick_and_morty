@@ -50,12 +50,16 @@ function App(props) {
       const URL = 'http://localhost:3001/rickandmorty/login/';
       try {
          let response = await axios(URL + `?email=${email}&&password=${password}`);
-         const { access } = response.data;
-         setAccess(response.data);
-         if (access) {
-            navigate('/home');
+         if (response.data.error) {
+            window.alert(response.data.error.message);
          } else {
-            alert('Check your login details!');
+            const { access } = response.data;
+            setAccess(response.data);
+            if (access) {
+               navigate('/home');
+            } else {
+               alert('Check your login details!');
+            }
          }
       } catch (error) {
          window.alert(error.message);
@@ -95,15 +99,19 @@ function App(props) {
       try {
          let res = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`);
          let printed = false;
-         for (let i=0; i<characters.length;i++) {
-            if (characters[i].id === res.data.id) {
-               printed = true;
-            }
-         }
-         if (printed) {
-            window.alert("Character is already there!");
+         if (res.data.error) {
+            window.alert(res.data.error.message);
          } else {
-            setCharacters([...characters,res.data])
+            for (let i=0; i<characters.length;i++) {
+               if (characters[i].id === res.data.id) {
+                  printed = true;
+               }
+            }
+            if (printed) {
+               window.alert("Character is already there!");
+            } else {
+               setCharacters([...characters,res.data])
+            }
          }
       } catch (error) {
          window.alert(error.message);

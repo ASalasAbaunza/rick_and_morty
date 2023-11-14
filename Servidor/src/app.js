@@ -18,7 +18,7 @@ http.createServer((req, res) => {
 }).listen(3001, 'localhost');*/
 
 const express = require('express');
-const { routeGetCharById, routePostFav, routeDeleteFav, routeLogin } = require('./routes/index');
+const { routeGetCharById, routePostFav, routeDeleteFav, routeLogin, routeCreateLogin } = require('./routes/index');
 const server = express();
 
 server.use((req, res, next) => {
@@ -41,5 +41,6 @@ server.use((req, res, next) => {
  server.use('/rickandmorty', routePostFav);
  server.use('/rickandmorty', routeDeleteFav);
  server.use('/rickandmorty', routeLogin);
+ server.use('/rickandmorty', routeCreateLogin);
 
  module.exports = server;

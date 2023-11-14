@@ -29,10 +29,14 @@ export const ORDER = 'ORDER';
     return async (dispatch) => {
         try {
             let response = await axios.post(endpoint, character);
-            return dispatch({
-                type: ADD_FAV,
-                payload: response.data,
-            });
+            if (response.data.error) {
+                window.alert(response.data.error.message);
+            } else {
+                return dispatch({
+                    type: ADD_FAV,
+                    payload: response.data,
+                });
+            }
         } catch (error) {
             window.alert(error.message);
         }
@@ -63,10 +67,14 @@ export const ORDER = 'ORDER';
     return async (dispatch) => {
         try {
             let response = await axios.delete(endpoint);
-            return dispatch({
-                type: REMOVE_FAV,
-                payload: response.data,
-            });
+            if (response.data.error) {
+                window.alert(response.data.error.message);
+            } else {
+                return dispatch({
+                    type: REMOVE_FAV,
+                    payload: response.data,
+                });
+            }
         } catch (error) {
             window.alert(error.message);
         }

@@ -57,7 +57,7 @@ function Card(props) {
             <h2 className={styles.dataImage}>{props.status}</h2>
             <h2 className={styles.dataImage}>{props.species}</h2>
             <h2 className={styles.dataImage}>{props.gender}</h2>
-            <h2 className={styles.dataImage}>{props.origin?.name}</h2>
+            <h2 className={styles.dataImage}>{props.origin}</h2>
          </div>
       </div>
    );
